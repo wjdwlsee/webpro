@@ -1,0 +1,13 @@
+package com.lec.ex;
+
+public class Variable {
+	public static void main(String[] args) {
+		int age = 27; //27(¿ìÈ²)À» age º¯¼ö(ÁÂÇ×)¿¡ È°´ç
+		String name= "Á¦´Ï";
+		
+		System.out.println("¾È³çÇÏ¼¼¿ä.28»ì ºß¾¾:");
+	    System.out.println("¾È³çÇÏ¼¼¿ä.28»ì ºß¾¾:");
+	}
+	
+
+}
