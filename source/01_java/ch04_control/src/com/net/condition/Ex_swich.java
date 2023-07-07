@@ -1,5 +1,5 @@
 package com.net.condition;
-//lf vs. swich
+//lf vs. switch
 public class Ex_swich {
 	public static void main(String[] args) {
 		int num = 3;
