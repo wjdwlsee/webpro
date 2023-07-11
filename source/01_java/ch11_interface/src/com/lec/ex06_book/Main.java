@@ -45,7 +45,7 @@ public class Main {
 					}
 				}					
 				break;
-			case 2 : //반납 : 1.책이름 입력 2.책조회 3.checkin()메소드 호출
+			case 2 : //반납 : 1.책이름 입력 2.책조회 3.checkIn()메소드 호출
 				//1. 책이름 입력
 				System.out.println("반납할 책 이름은?");
 				bTitle =scanner.next();
