@@ -1,0 +1,14 @@
+JAVA의 필수 API는 누군가 만들어 놓은 기능들이다.
+문자열에 관련된 대표적 클래스인string은 객체 자료형지만 String은 분명 대문자로 시작하므로, 기초데이터가 아닌 객체데이터 이지만 뒤에 생성자(new)를 사용하지 않고 기초데이터를 만들 때처럼 초기화 하고 있다.
+String의 주요 기능들(메소드)에는 아래와 같은 것들이 있다.
+String concat(String str) : 저장된 문자열과 str문자열을 결합
+String substring(int begin) : 시작위치부터 마지막까지의 문자열을 반환
+int length() : 문자열 길이를 반환
+String toUpperCase() : 대문자로 반환 , String toLowerCase() : 소문자로 반환
+char charAt(int index) : index 위치의 문자를 반환,
+int indexOf(char ch) : 첫번째 ch문자의 위치를 반환 ,int lastIndexOf(char ch) : 마지막 ch문자의 위치를 반환
+boolean equals(String str) : 지정된문자열과 str문자열이 같은지 비교 ,boolean equalslgnoreCase(String str) : 대소문자구분없이 지정된문자열과 str문자열이 같은지 비교
+String trim() : 문자열 앞뒤 공백제거
+String replace(char old, char new) : 문자열 내의 old문자를 new문자로 반환
+string의 단점은 메모리를 과소비 하는 것 인데 String객체의 경우 처음 초기화된 데이터에 변화가 생기면 기존 것을 재활용하지 않기 때문이다.
+ String 객체가 가지고 있는 문자열의 내용을 바꾸는 것이 아니라 바뀐 내용을 갖는 새로운 String객체를 생성해내고 그렇기 때문에 문자열 조작을 많이 하는 프로그램에서 이런 메소드를 많이 사용하면 String 객체가 너무 많이 생겨 메모리도 많이 쓰게 되고 프로그램의 성능도 떨어진다.
