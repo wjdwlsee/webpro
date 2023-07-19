@@ -11,7 +11,7 @@ import com.lec.ex1_list.Friend;
 
 public class CustomerArrayListMain {
 	public static void main(String[] args) {
-	
+		String namestr                = "홍길동";
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		Scanner scanner = new Scanner(System.in);
 		String answer, name, tel, address;
@@ -26,10 +26,18 @@ public class CustomerArrayListMain {
 			System.out.println("전화번호 ?");
 			tel = scanner.nextLine(); 
 			System.out.println("주소 ?");
-			address= scanner.nextLine();
-			
+			address= scanner.nextLine();			
+			// customers.add(입력받은 내용을 통해 만든 customer 객체);
 			customers.add(new Customer(name, tel , address));
-			
+
+			//			Customer customer = new Customer(); //customer.name =null tel=null,address=null
+//			System.out.printf("이름 ?");
+//			customer.setName(scanner.nextLine());
+//			System.out.printf("전화?");
+//			customer.setTel(scanner.nextLine());
+//			System.out.printf("주소?");
+//			customer.setAddress(scanner.nextLine());
+//			customer.add(customer);
 		}
 		if(customers.size()==0) {
 			System.out.println("가입한 회원이 없습니다");
@@ -39,7 +47,7 @@ public class CustomerArrayListMain {
 				System.out.println(customer);
 				
 			}
-			System.out.println(".....");
+			
 		}
 	}
 }
