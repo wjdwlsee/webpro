@@ -175,13 +175,15 @@ SELECT * FROM EMP WHERE SAL<3000;
     SELECT EMPNO, ENAME, SAL ANNUALSAL FROM EMP WHERE SAL*12>=2400 ORDER BY SAL;
 --4. DLQ싸일이 1981년 2월 20과 1981년 5월 1일 사이에 입사한 사원의 사원명, 직책, 입사일을 출력 (단 hiredate 순으로 출력)
     SELECT ENAME,EMPNO, JOB, HIREDATE FROM EMP WHERE HIREDATE >'81/02/20' AND HIREDATE<'81/05/01' ORDER BY HIREDATE;
+    --어떤 날짜세팅에서나 가능
+    SELECT ENAME,EMPNO, JOB, HIREDATE FROM EMP WHERE TO_CHAR(HIREDATE, 'RR/MM/DD')BETWEEN '81
 --5. deptno가 10,20인 사원의 모든 정보를 출력 (단 ename순으로 정렬)
      SELECT * FROM EMP WHERE DEPTNO =10 OR DEPTNO =20 ORDER BY ENAME;
 --6. sal이 1500이상이고 deptno가 10,30인 사원의 ename과 sal를 출력
 -- (단 HEADING을 employee과 Monthly Salary로 출력)
      SELECT ENAME "employee", SAL "Monthly Salary" FROM EMP WHERE SAL>=1500 AND (DEPTNO IN(10,30)); 
 --7. hiredate가 1982년인 사원의 모든 정보를 출력
-    SELECT *FROM EMP WHERE HIREDATE BETWEEN '82/01/01' AND '82/12/31';
+    SELECT *FROM EMP WHERE HIREDATE BETWEEN '82/12/01' AND '82/01/01';
 --8. 이름의 첫자가 C부터 P로 시작하는 사람의 이름, 급여 이름순 정렬
     SELECT ENAME, SAL FROM EMP WHERE ENAME BETWEEN 'C' AND 'P' ORDER BY ENAME;
 --9. comm이 sal보다 10%가 많은 모든 사원에 대하여 이름, 급여, 상여금을
@@ -206,6 +208,8 @@ SELECT * FROM EMP WHERE SAL<3000;
     SELECT EMPNO,ENAME FROM EMP WHERE ENAME LIKE '%A%';
 --17. 연봉(SAL*12)이 35000 이상인 사번, 사원명, 연봉을 검색 하시오.
     SELECT EMPNO, ENAME,SAL FROM EMP WHERE SAL*12>=35000;
+    
+    
     
     
     
