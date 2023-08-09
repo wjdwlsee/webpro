@@ -1,0 +1,23 @@
+﻿
+table {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+th {
+    background-color: #f5a442;
+    color: white;
+}
+
+td {
+    width: 200px;
+    box-sizing: border-box;
+    background-color: #9C5B36;
+    color: white;
+}
+
+tr a {
+    text-decoration: none;
+    color: white;
+}
+
