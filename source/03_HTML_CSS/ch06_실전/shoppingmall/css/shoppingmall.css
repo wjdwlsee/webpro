@@ -1,0 +1,19 @@
+﻿/*css/shoppingmall.css*/
+/***페이지 초기화***/
+@font-face { /*두 폰트 설정*/
+    font-family: 'Merriweather-Light';
+    src: url('../font/Merriweather-Light.ttf') /*css파일 기준으로*/
+}
+@font-face {
+    font-family: '/Merriweather-Regular';
+    src: url('../font/Merriweather-Regular.ttf')
+}
+h1:nth-child(1){
+    font-family:'Merriweather-Regular';
+}
+h1:nth-child(2){
+    font-family:'Merriweather-Light';
+}
+h1:nth-child(3) {
+    font-family: 'Barriecito', cursive;
+}
