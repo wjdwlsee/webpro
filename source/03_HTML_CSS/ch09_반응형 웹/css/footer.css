@@ -1,0 +1,9 @@
+﻿/*css/footer.css*/
+#wrap{
+    margin:0 auto;
+}
+#wrap #footer {
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+}
