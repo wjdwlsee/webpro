@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-image: url('img/img03.png');
+            background-size: 100%;
+            color: #000000;
+        }
+    </style>
+    <script>
+        let img = ['url(img/img01.png)','url(img/img02.png)','url(img/img03.png)'];
+        let cor = ['#ffff00','#FF00FF','#000000'];
+        let s = 0;
+        var id =setInterval(function(){                                         
+                    document.body.style.backgroundImage = img[s%img.length] ;
+                    document.body.style.color = cor[s%cor.length];      
+                    document.body.innerHTML = new Date() + '<br>';
+                    s++;
+                    },1000) ;
+        setTimeout(function(){
+            clearInterval(id);
+            document.body.innerHTML += '<h1> - 타이머 종료 -</h1>';
+        },10000);
+    </script>
+</head>
+<body>
+    1초 후부터 10초 동안 시간 출력 <br>
+</body>
+</html>

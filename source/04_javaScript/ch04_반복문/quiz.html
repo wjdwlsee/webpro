@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+            var cnt = 0;
+            var right = 0;
+            var wrong = 0;
+            var sum = 0;
+            while(confirm('점수를 누적하시겠어요?')){
+                ++cnt;
+                scoreStr =prompt('누적할 점수는?','0~100'); 
+                score = parseInt(scoreStr);
+                if(scoreStr!=null && scoreStr!='' && !isNaN(score) && score>=0 && score<=100){
+                    sum += score;
+                    right++; 
+                }else{
+                    wrong++
+                }
+            }
+            document.write(cnt + "번 입력<br>");
+            document.write('누적합은 :' + sum +'<br>');  
+            document.write('점수를 제대로 입력한 횟수 :' + right + '<br>');
+            document.write('점수를 잘못 입력한 회수:' + wrong + '<br>');
+            
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
