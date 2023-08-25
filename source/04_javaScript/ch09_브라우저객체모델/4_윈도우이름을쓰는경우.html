@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function openWin(){
+        let child = open('','childWin','width:700','hegiht:400');
+        if(!child){
+        alter('팝엎 차단 해제요망')
+        } 
+    }
+            
+    </script>
+</head>
+<body>
+    <botton onclick ="openWin()">새창열기</botton>
+    <a href="http://www.naver.com" target="childWin">네이버</a>
+</body>
+</html>

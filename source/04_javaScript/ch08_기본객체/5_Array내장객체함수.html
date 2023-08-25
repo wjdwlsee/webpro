@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let arr1 = new Array('hig','abc','zxy','kim');
+        let arr2 =[52,100,12,9,32];
+        document.write('정렬전 arr : ' +arr1 + +'<br>');
+        //let arr1_original =arr1;//얕은복사
+        let arr1_original =arr1.slice(); //깊은복사
+        arr1.sort(); //ascii코드 순으로 정렬(arr1이바뀜)
+        document.write('깊은 복사한 array : ' +arr1_original + '<br>');
+        document.write('arr1_original :' + arr1_original + '<br>');
+        document.write('정렬후 arr1 :' + arr1 +'<br>');
+        document.write('정렬전 arr2 :' + arr2 +'<br>');
+        arr2.sort(function(left,right){
+            return left-right; //오름차순 정렬
+           // return right-left; //내림차순
+        }); //아스키 코드순으로 정렬
+        document.write('오름차순정렬후 arr2 :' + arr2 +'<br>');
+        arr2.sort((left,right) => right-left); //내림차순 정렬
+        document.write('내림차순 정렬후 arr2 :' + arr2 + '<br>');
+        arr2.reverse(); //배열 요소 순서를 뒤집는다
+        document.write('reverse 후:' + arr2 + '<br>');
+        let top3 = arr2.slice(0,3); 
+        document.write('top3 :' + top3 +'<br>')
+    </script>
+</head>
+<body>
+
+</body>
+</html>
