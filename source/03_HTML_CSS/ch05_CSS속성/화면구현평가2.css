@@ -1,0 +1,31 @@
+﻿
+#contain {
+    width:800px;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    
+}
+
+h1 {
+    text-decoration: underline;
+    text-align: center;
+    height: 100px;
+}
+
+h3 {
+    padding: 10px;
+   
+}
+
+#contain .row1 {
+    padding: 40px;
+}
+
+#contain .row2 {
+    padding-left: 680px;
+}
+
+a {
+    text-align: center;
+    padding: 50px;
+}

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            color:saddlebrown;
+        }
+        header,nav,section,footer{
+            border:1px solid gray;
+            width:500px;
+            margin:2px auto;
+        }
+        nav ul {
+            overflow: hidden;
+            }
+         nav ul li {
+             float: left;
+             list-style: none;
+             margin: 10px 26px;
+            }
+        section { /* float:left 속성을 clear. 부모단에서 overflow:hidden을 했으면 생략 가능*/
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OO 주식회사</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>회사소개</li>
+            <li>서비스 소개</li>
+            <li>고객센터</li>
+            <li>공지사항</li>
+        </ul>
+    </nav>
+    <section>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+    </section>
+    <footer>
+        <p>서울시 서대문구 신촌로 114, 2F (대현동, 은하빌딩)</p>
+    </footer>
+</body>
+</html>

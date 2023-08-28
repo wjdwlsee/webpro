@@ -1,0 +1,11 @@
+mySQL의 특징은 SQL에 기반을 둔 관계형 DBMS 중 하나이며 Oracle, IBM, Infomix 등의 데이터베이스는 고가이지만 MySQL 은 무료(배포판)이고 거의 모든 운영체제에서 사용가능하다.
+  또 처리속도가 상당히 빠르고 대용량의 데이터 처리가 용이하다는 장점이 있고 설치방법이 쉽고 초보자도 익히기 쉽고 보안성이 우수하다.
+MySQL의 시작 C:\Program Files\MySQL\MySQL Server 8.0\bin에서 cmd실행하여 mysql –u계정 -p비밀번호 실행 : 관리자 계정 root로 접속 : mysql -uroot –pmysq
+계정 생성 -> create user user01 identified by ‘password’;
+권한 부여 ->  grant all on *.* to user01;  /    grant all privileges on *.* to user01;     /    flush privileges;
+권한 박탈 -> revoke all on *.* from user01;      
+계정 삭제 -> drop user user01;
+존재하는 데이터베이스들 목록 보기 : show databases; ,  새로운 데이터베이스 생성 명령 : create database 데이터베이스명; , 데이터베이스로 들어가기 : use 데이터베이스명 , 내가 어디서 작업하는지 모를 때 select database();
+MySQL 자료형 : Tinyint, smallint, int, integer, float(m,d), double, char, varchar, BLOB, date, datetime, timestamp, time
+제약조건 : Unique, primary key, not null, foreign key, check, 그외 제약조건은 아니나 default 
+ 제약조건 중 foreign ket 제약조건은 반드시 아래에 명시해야 한다.

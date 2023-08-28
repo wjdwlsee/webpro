@@ -1,0 +1,14 @@
+SQL문의 종류는 다음과 같다. 
+ (1)DML (데이터 검색, 수정 등) 
+ -데이터 삽입하기 :INSERT INTO table_name (column_name, ..) VALUES (column_values, …); OR INSERT INTO table_name VALUES (column_values, …);
+  DBMS에 부적합한 데이터가 테이블에 삽입되는 것을 방지하기 위해 (제약조건)CONSTRAINT를 사용하는데 종류는(NOT NULL,UNIQUE ,PRIMARY KEY,FOREIGN KEY,CHECK) 이 있다.
+  -데이터를 수정:UPDATE table_name SET column_name1=value1, column_name2 = value2, ..WHERE condition;
+  -테이블의 모든 행을 삭제:DELETE FROM table_name WHERE conditions ;
+(2)DDL을 사용하여 테이블 구조 자체를 새롭게 생성, 수정, 삭제할 수 있다.
+  - 테이블 생성:CREATE TABLE  TABLE NAME / column_name data_type expr CHAR(size) ,VARCHAR2(size),NUMBER,NUMBER(w),NUMBER(w, d),DATE,LOB
+   -테이블 구조 변경 은 ALTER TABLE로 가능하며 다음과 같은 명령어를 사용한다.
+  ADD COLUMN 절을 사용하여 새로운 칼럼을 추가, MODIFY COLUMN 절을 사용하여 기존 칼럼을 수정,DROP COLUMN 절을 사용하여 기존 칼럼을 삭제
+  -테이블에 이미 존재하는 컬럼을 삭제 는ALTER TABLE ~ DROP COLUMN 명령어를 사용하며 DROP TABLE로 테이블 구조 삭제할 수 있다.
+  테이블의 모든 로우를 제거하는 TRUNCATE ,테이블 명을 변경하는 RENAME도 있다.
+ (3)DCL : 데이터베이스 사용자의 권한 제어 
+  1. 계정만드는 명령어 CREATE USER 계정 IDENTIFIED BY 비번; , 2. 권한 부여 GRANT 권한 TO 계정; , 3. 권한 박탈 REVOKE 권한 FROM 계정; 4. 계정 삭제 DROP USER 계정 CASCADE; (계정 삭제는 로그아웃일 경우만 가능)

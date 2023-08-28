@@ -1,0 +1,8 @@
+입출력(I/O)이란 입력(Input)과 출력(Output)을 뜻하며 프로그램에게 입력하는 것은 Input, 프로그램에서 어떤 것을 출력하는 것을 Output이라고 한다. 
+자바에서의 파일입출력 API는 InputStream,outputStream,writer,Reader 가 있다.
+InputStream 와 OutputStream는 1byte단위 출력하며 API. 이미지, 동영상 등의 데이터에 주로 사용하고, Reader와 Writer는 2byte단위 입력 API. 문자열에 주로 사용한다.
+ 스트림이란 데이터를 운반(입출력)하는데 사용되는 연결통로이다.
+InputStream 사용법은 추상클래스를 상속받은 여러 가지 API 하위 클래스 중의 하나를 이용해서 객체를 만들고 다른 클래스의 메소드에서 반환(리턴)되는 타입 객체를 얻으며 read(), read(byte[]) 두 개의 메소드를 이용하여 데이터를 읽는다. 
+그리고 무조건 예외 처리와 무조건 close() 실행을 헤야한다.
+outputStream은 write(int), write(byte[]), write(byte[], int, int) 세개의 메소드를 이용해서 데이터를 읽는것 외는 위와 같다.
+Reader와 Writer는 2byte 단위로 읽고 쓰며 속도를 빨리 하기 위한 보조 스트림으로 각 BufferedReader, BufferedWriter 클래스를 사용할 수 있다.

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let kor, eng;
+        do {
+            var korStr = prompt('국어점수를 입력하세요', '0~100');
+            kor = Number(korStr); 
+            if(!korStr || isNaN(kor) || kor<0 || kor>100){
+                alert('점수를 다시 입력하세요');
+            }
+        } while (!korStr || isNaN(kor) || kor<0 || kor>100) {     
+        }
+        do{
+            var engStr = prompt('영어점수를 입력하세요','0~100' );
+            eng = parseInt(engStr);
+        }while( !korStr|| isNaN(eng) || eng<0 || eng>100);
+            document.write('국어는 : ' +kor + '<br>');
+            document.write('영어는 : ' +eng + '<br>')
+            document.write('평균 점수는 = ' + ((kor+eng)/2));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

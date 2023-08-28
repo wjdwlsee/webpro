@@ -1,0 +1,112 @@
+﻿@font-face {
+    font-family: 'Amarante-Regular';
+    src: url('../font/Amarante-Regular.ttf');
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Amarante-Regular';
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+/**header**/
+header {
+    position: relative;
+    margin: 0 auto;
+}
+header #header_nav {
+        min-width: 915px;
+        
+    }
+    header #header_nav .gnb {
+        height: 25px;
+        line-height: 25px;
+        background-color: #2d1152;
+        overflow: hidden;
+       
+    }
+
+        header #header_nav .gnb > div {
+            float: left;
+            margin: 2px;
+            margin: 0 10px;
+        }
+
+    header #header_nav .gnb .survivaFootball {
+        float: right;
+        color: white;
+        margin-right: 20px;
+    }
+
+        header #header_nav .gnb > div a {
+            color: white;
+        }
+
+        header #header_nav .gnb .survivaFootball img {
+            width: 15px;
+        }
+
+    header #info { 
+       
+        text-align: center;
+        
+        overflow: hidden;
+        width:1000px;
+        margin:0 auto;
+        
+    }
+
+        header #info .logo {
+
+            float: left;                                  
+            margin: 10px 20px 0 0;
+        }
+        header #info form {
+            float: left;
+            margin:0 auto;
+            
+        }
+
+        header #info input[type='text'] {
+            width: 400px;
+            border-color: #3488d9;
+            margin-top:20px;
+            padding:5px;
+            font-size:20px;
+        }
+        header #info input[type='submit'] {
+            background: url('../img/search_btn.png')center no-repeat;
+            border: 0;
+            outline: 0;            
+            width: 124px;
+            height: 37px;
+            color: white;
+            
+        }
+
+        header #info .service ul {
+            float: right;
+            overflow: hidden;
+          
+            padding: 10px 0px;
+        }
+
+         header #info .service ul li {
+              float: left;
+              margin: 20px;
+            }
+
+         header #info .service ul li a {
+               color: #2d1152;
+               font-weight: bold;
+            }
+
+            
