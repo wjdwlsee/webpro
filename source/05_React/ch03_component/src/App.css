@@ -1,0 +1,9 @@
+body{
+    text-align: center;
+    color: aliceblue;
+    font-weight: bold;
+    
+}
+div ul li{
+    list-style: none;
+}
