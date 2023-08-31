@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var overImg = ["img/0over.jpg", "img/1over.jpg" ,"img/2over.jpg" ,"img/3over.jpg"];
+        var outImg = ['img/0out.jpg', "img/1out.jpg" ,"img/2out.jpg" ,"img/3out.jpg"]; 
+        window.onload = function(){                            
+            var src2 = document.getElementsByTagName('img');  
+            for(let idx=0 ; idx<src2.length ; idx++){    
+                src2[idx].addEventListener('mouseover' ,function(){
+                    this.setAttribute('src' , overImg[idx]);
+                });
+                src2[idx].addEventListener('mouseout' ,function(){
+                    this.setAttribute('src' , outImg[idx]);
+                });
+            }
+        };        
+            //기본
+            // for(let idx=0 ; idx<src2.length ; idx++){
+            //     src2[idx].onmouseout = function(){
+            //         this.setAttribute('src', outImg[idx]);
+            //         //this.setAttribute('alt', 'out1');
+            //     };    
+            //     src2[idx].onmouseover =function(){
+            //         this.setAttribute('src', overImg[idx]);
+            //         //this.setAttribute('alt', 'over1');
+            //     };
+            // }//for
+        //}onload
+    </script>
+</head>
+<body>
+    <img src="img/0out.jpg" alt="out0">
+    <img src="img/1out.jpg" alt="out1">
+    <img src="img/2out.jpg" alt="out2">
+    <img src="img/3out.jpg" alt="out3">        
+</body>
+</html>
