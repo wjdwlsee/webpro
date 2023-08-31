@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {width:280px; height: 100px; margin: 10px auto;}
+        h2 {text-align: center;}
+    </style>
+    <script>
+        var col = ['red','orange','yellow','green','blue','pink'];
+        window.onload = function(){
+            var tbs = document.querySelectorAll('td');
+                for(let idx in tbs){
+                    tbs[idx].style = 'background-color :' + col[idx];
+                }
+        };              
+        const over = function(n){    
+        var h2 = document.createElement('h2');
+        var textNode = document.createTextNode('야호 거의 끝났다');
+        h2.appendChild(textNode);
+        h2.setAttribute('class','message');
+        document.body.appendChild(h2);
+        h2.style.color=col[n];
+        document.body.style.backgroundColor = 'black';
+        };
+        const out = function(){
+        var message = document.getElementsByClassName('message');
+        document.body.removeChild(message[0]);
+        document.body.style.backgroundColor = 'white';
+        };
+        
+    </script>
+</head>
+<body>
+    <h5>중간예제3</h5>
+    <table>
+        <tr  onmouseout="out()">
+            <td onmouseover="over(0)" ></td>
+            <td onmouseover="over(1)"></td>
+            <td onmouseover="over(2)"></td>
+            <td onmouseover="over(3)"></td>
+            <td onmouseover="over(4)"></td>
+            <td onmouseover="over(5)"></td>
+            <td onmouseover="over(6)"></td>           
+        </tr>
+    </table>
+</body>
+</html>
