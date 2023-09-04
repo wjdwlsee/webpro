@@ -51,7 +51,7 @@ class App extends Component{
         <Subject  title={this.state.subject.title} 
                   sub={this.state.subject.sub}
                   onChangePage={function(){
-                    this.setState({
+                      this.setState({
                       mode:'welcome'
                     });
                   }.bind(this)}></Subject>
