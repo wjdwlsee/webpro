@@ -1,0 +1,17 @@
+JDBC란 JAVA 프로그램에서 SQL문을 실행하여 데이터를 관리하기 위한 JAVA API.
+JDBC의 특징은 다양한 데이터 베이스에 대해서 별도의 프로그램을 만들 필요 없이, 해당 데이터 베이스의 JDBC를 이용하면 하나의 프로그램으로 데이터 베이스를 관리할 수 있다.
+ Oracle용 JDBC를 사용하며, 이것은 오라클을 설치하면 자동으로 설치 되고, 이클립스에서 해당 클래스 파일을 복사하면 된다
+데이터 베이스 연결 순서
+1 JDBC 드라이버 로드 : DriverManager로드 : Class.forName(“oracle.jdbc.driver.OracleDriver”); 메모리에 OracleDriver가 로드된다.
+2 데이터 베이스 연결 : Connection : DriverManager.getConnection(JDBC URL, 계정아이디, 비밀번호) : connection 객체 생성
+3 SQL문 실행 :  -- connection.createStatement();Statement 객체를 통해 SQL문 실행 , 
+	        --ResultSet : statement.executeQuery(), statement.executeUpdate(); SQL문의 결과값을 ResultSet객체로 받는다
+4 데이터 베이스 연결 해제
+Statement 객체 = executeQuery() ; SQL문 실행 후 여러 개의 결과값 생기는 경우 사용 ex. Select,
+	executeUpdate();SQL문 실행 후 테이블의 내용만 변경되는 경우 사용 ex. insert, delete, update
+	executeQuery() 실행 후 반환되는 레코드 셋
+	ResultSet.next(); 다음 레코드로 이동
+	ResultSet.previous(); 이전 레코드로 이동
+	ResultSet.first(); 처음 레코드로 이동
+	ResultSet.last(); 마지막 레코드로 이동
+	get메소드 : getString, getInt

@@ -1,0 +1,17 @@
+예외 페이지의 필요성:JAVA언어에서 특정 상황에서 예외 발생시 프로세스가 멈추면 안되서 try-catch나 throw를 이용해서 예외처리를 하였다.
+예외적인 상황이 발생했을 경우 웹컨테이너(톰캣)에서 제공되는 기본적인 예외 페이지가 보여 진다면, 사용자로 하여금 뭔가 불쾌한 느낌이 들면서, 다시는 해당 사이트에 접속하려 들지 않을 것이다.
+ 따라서 약간은 다소 딱딱한 에러 페이지를 보다 친근한 느낌이 느껴지는 페이지로 유도 할 수 있다.
+Page 지시자를 이용한 예외처리 : 예외 발생 페이지에서 <%@ page errorPage = “exceptionPage.jsp” %> 
+예외 처리 페이지 : <%@ page isErrorPage=”true”%> <%--이페이지는 에러페이지를 받을 수 있다는 의미--> 
+	           <%response.setStatus(200); %>  <%--200은 에러 없는 정상적인 페이지를 뜻함.-->
+종류 : <%-- 403 : Forbidden, 접근이 거부된 문서를 요청  -->
+       ,<%-- 404 : Not found, 문서를 찾을 수 없음 -->
+       ,<%-- 405 : Method not allowed, 리소스를 허용 안 함 --> 
+        <%-- 407 : Proxy authentication required, 플록시 인증 필요 --> 
+       ,<%-- 500 : Internal Server error 예외, 문법적 오류-->,
+<%=exception.getMessage()%> 위의 page지시자에 isErrorPage=”true” 를 꼭 써야한다
+web.xml 파일을 이용한 예외처리 = web.xml 소스 : url매핑이나 initParameter나 context파라미터 등을 지정
+ex) <error-page>
+  	<exception-type>java.lang.NumberFormatException</exception-type>
+  	<location>/error/errorNumber.jsp</location>
+  </error-page>
