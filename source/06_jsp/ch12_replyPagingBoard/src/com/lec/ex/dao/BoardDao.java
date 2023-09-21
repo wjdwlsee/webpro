@@ -77,6 +77,51 @@ public class BoardDao {
 		}
 		return dtos;
 	}
+	//1. 글목록(startRow~endRow까지의 글 그룹이 최신글이 위로)
+	public ArrayList<BoardDto> listBoard(int startRow, int endRow){
+		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * " + 
+				"  FROM ( SELECT ROWNUM RN, A.*  " + 
+				"  		FROM (SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP) A ) " + 
+				"  WHERE RN BETWEEN ? AND ?";
+		try {
+			conn  = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs    = pstmt.executeQuery();
+			while(rs.next()) {
+				int bid         = rs.getInt("bid");
+				String bname    = rs.getString("bname");
+				String btitle   = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				String bemail   = rs.getString("bemail");
+				int    bhit     = rs.getInt("bhit");
+				String bpw      = rs.getString("bpw");
+				int    bgroup   = rs.getInt("bgroup");
+				int    bstep    = rs.getInt("bstep");
+				int    bindent  = rs.getInt("bindent");
+				String bip      = rs.getString("bip");
+				Timestamp bdate = rs.getTimestamp("bdate");
+				dtos.add(new BoardDto(bid, bname, btitle, bcontent, bemail, 
+						bhit, bpw, bgroup, bstep, bindent, bip, bdate));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dtos;
+	}
 	//2. 전체 글 갯수
 	public int getBoardTotalCnt() {
 		int totalCnt = 0;
@@ -177,87 +222,7 @@ public class BoardDao {
 			}
 		}
 	}
-//	//5. bID로 DTO가져오기(글상세보기) - 4번조회수 올리고 DTO가져오기
-//	public BoardDto getContent(int bid) {
-//		hitUp(bid); // 글 상세보기 시 조회수 자동 1올리기
-//		BoardDto dto = null;
-//		Connection        conn  = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet         rs    = null;
-//		String sql = "SELECT * FROM BOARD WHERE BID = ?";
-//		try {
-//			conn  = getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, bid);
-//			rs    = pstmt.executeQuery();
-//			if(rs.next()) {
-//				String bname    = rs.getString("bname");
-//				String btitle   = rs.getString("btitle");
-//				String bcontent = rs.getString("bcontent");
-//				String bemail   = rs.getString("bemail");
-//				int    bhit     = rs.getInt("bhit");
-//				String bpw      = rs.getString("bpw");
-//				int    bgroup   = rs.getInt("bgroup");
-//				int    bstep    = rs.getInt("bstep");
-//				int    bindent  = rs.getInt("bindent");
-//				String bip      = rs.getString("bip");
-//				Timestamp bdate = rs.getTimestamp("bdate");
-//				dto = new BoardDto(bid, bname, btitle, bcontent, bemail, 
-//						bhit, bpw, bgroup, bstep, bindent, bip, bdate);
-//			}
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage());
-//		} finally {
-//			try {
-//				if(rs    != null) rs.close();
-//				if(pstmt != null) pstmt.close();
-//				if(conn  != null) conn.close();
-//			} catch (SQLException e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
-//		return dto;
-//	}
-//	public BoardDto getContent(String bid) {
-//		hitUp(bid); // 글 상세보기 시 조회수 자동 1올리기
-//		BoardDto dto = null;
-//		Connection        conn  = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet         rs    = null;
-//		String sql = "SELECT * FROM BOARD WHERE BID = ?";
-//		try {
-//			conn  = getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, bid);
-//			rs    = pstmt.executeQuery();
-//			if(rs.next()) {
-//				String bname    = rs.getString("bname");
-//				String btitle   = rs.getString("btitle");
-//				String bcontent = rs.getString("bcontent");
-//				String bemail   = rs.getString("bemail");
-//				int    bhit     = rs.getInt("bhit");
-//				String bpw      = rs.getString("bpw");
-//				int    bgroup   = rs.getInt("bgroup");
-//				int    bstep    = rs.getInt("bstep");
-//				int    bindent  = rs.getInt("bindent");
-//				String bip      = rs.getString("bip");
-//				Timestamp bdate = rs.getTimestamp("bdate");
-//				dto = new BoardDto(Integer.parseInt(bid), bname, btitle, bcontent, bemail, 
-//						bhit, bpw, bgroup, bstep, bindent, bip, bdate);
-//			}
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage());
-//		} finally {
-//			try {
-//				if(rs    != null) rs.close();
-//				if(pstmt != null) pstmt.close();
-//				if(conn  != null) conn.close();
-//			} catch (SQLException e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
-//		return dto;
-//	}
+
 	//5. bID로 DTO가져오기(글수정FORM, 답변글쓰기FORM) - 조회수 올리지 않음
 	public BoardDto getBoardNotHitUp(int bid) {
 		BoardDto dto = null;
@@ -399,10 +364,66 @@ public class BoardDao {
 		}
 		return result;
 		}
-}
-		
-		
-		
+	// 8. 답변글 저장 전 BSTEP 조정 단계(엑셀에서 ⓐ단계)
+		private void preReplyStep(int bgroup, int bstep) {
+			Connection        conn  = null;
+			PreparedStatement pstmt = null;
+			String sql = "UPDATE BOARD SET BSTEP = BSTEP + 1 WHERE BGROUP=? AND BSTEP>?";
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bgroup);
+				pstmt.setInt(2, bstep);
+				int cnt = pstmt.executeUpdate();
+				System.out.println("기존 답변글 " + cnt + "개 bstep 조정됨");
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}finally {
+				try {
+					if(pstmt != null) pstmt.close();
+					if(conn  != null) conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+		// 9. 답변글 쓰기
+		// 사용자로부터 입력받는 답변글 정보 : bname, btitle, bcontent, bemail, bpw
+		// 원글에 대한 정보 : bgroup, bstep, bindent
+		// jsp에서 request.getRemoteAddr()로부터 : bip
+		public int reply(BoardDto dto) {
+			int result = FAIL;
+			preReplyStep(dto.getBgroup(), dto.getBstep()); // 답변글 저장 전단계
+			Connection        conn  = null;
+			PreparedStatement pstmt = null;
+			String sql = "INSERT INTO BOARD (BID, BNAME, BTITLE, BCONTENT, BEMAIL, BPW, "
+					+ "			BGROUP, BSTEP, BINDENT, BIP) "
+					+ "VALUES (BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ?, "
+					+ "			?, ?, ?, ?)";
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getBname());
+				pstmt.setString(2, dto.getBtitle());
+				pstmt.setString(3, dto.getBcontent());
+				pstmt.setString(4, dto.getBemail());
+				pstmt.setString(5, dto.getBpw());
+				pstmt.setString(6, dto.getBip());
+				result = pstmt.executeUpdate();
+				System.out.println("원글 쓰기 성공");
+			} catch (SQLException e) {
+				System.out.println(e.getMessage() + " - 원글쓰다 예외 발생 : " + dto);
+			}finally {
+				try {
+					if(pstmt != null) pstmt.close();
+					if(conn  != null) conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return result;
+		}
+	}
 		
 		
 		

@@ -13,8 +13,10 @@
 	<jsp:useBean id="dto" class="com.lec.ex.dto.BoardDto" />
 	<jsp:setProperty property="*" name="dto"/>
 	<%
-	//들어온 파라미터 : bid, bname, btitle, bcontent, bemail, bpw
+	//들어온 파라미터 : bid, bname, btitle, bcontent, bemail, bpw ,pageNum
 	//dao.modifyBoard(dto)를 호출하기 위해서 bip 추가 셋팅
+	/*pageNum 추가*/
+	String pageNum = request.getParameter("pageNum");
 	dto.setBip(request.getRemoteAddr());
 	BoardDao bDao = BoardDao.getInstance();
 	int result = bDao.modifyBoard(dto);
@@ -23,7 +25,7 @@
 		<script>
 			alert('글수정 성공');
 			//location.href = '<%=conPath%>/board/list.jsp'; //글 수정후 글목록 페이지로
-			  location.href = '<%=conPath%>/board/content.jsp?bid=<%=dto.getBid()%>&after=u';
+			  location.href = '<%=conPath%>/board/content.jsp?bid=<%=dto.getBid()%>&after=u&pageNum=<%=pageNum%>';
 		</script>
 	<%}else{%>
 		<script>

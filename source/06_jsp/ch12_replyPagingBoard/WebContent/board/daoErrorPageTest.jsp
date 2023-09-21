@@ -17,7 +17,7 @@
 	<%
 	BoardDao bDao = BoardDao.getInstance();
 	out.println("<h3>1.글목록<h3>");
-	ArrayList<BoardDto> dtos = bDao.listBoard();
+	ArrayList<BoardDto> dtos = bDao.listBoard(11,20);
 	for(BoardDto dto :dtos){
 		out.println(dto +"<br>");
 	}
@@ -27,21 +27,21 @@
 	int result = bDao.writeBoard(dto);
 	out.println(result == BoardDao.SUCCESS ? ":성공</h3>" : ":실패</h3>");
 	out.println("<h3>6.조회수 안올리고, 글번호 dto가져오기</h3>");
-	out.println("2번 글:" + bDao.getBoardNotHitUp(2) +"<br>");
+	out.println("2번 글:" + bDao.getBoardNotHitUp(50) +"<br>");
 	out.println("<h3>6.조회수 올리고, 글번호 dto가져오기</h3>");
 	bDao.hitUp(2);
-	out.println("2번 글:" + bDao.getBoardNotHitUp(2) +"상세보기");
+	out.println("2번 글:" + bDao.getBoardNotHitUp(50) +"상세보기");
 	out.println("<h3>7.글수정<h3>");
-	dto = bDao.getBoardNotHitUp(2); //2번 글 정보 
+	dto = bDao.getBoardNotHitUp(50); //2번 글 정보 
 	dto.setBname("독특자");
 	dto.setBtitle("독특한 제목");
 	dto.setBcontent("독특한 본문 수정함 \n수정완료");
 	result = bDao.modifyBoard(dto);
 	out.print(result == BoardDao.SUCCESS ? "성공" : ":실패 </h3>");
 	out.print("<h3> 8.글삭제</h3>");
-	result = bDao.deleteBoard(2, "1");
+	result = bDao.deleteBoard(50, "1");
 	out.print(result == BoardDao.SUCCESS ? "글삭제 성공<br>" : "비번오류로 글삭제 실패<br>");
-	result= bDao.deleteBoard(2, "111");
+	result= bDao.deleteBoard(50, "111");
 	out.print(result == BoardDao.SUCCESS ? "글삭제 성공<br>" : "비번오류로 글삭제 실패<br>");
 	
 	%>
