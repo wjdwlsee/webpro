@@ -20,8 +20,8 @@
 		dto.setCbirth(Date.valueOf(tempCbirth));
 	}
 	CustomerDao cDao = CustomerDao.getInstance();
-	int result = cDao.confirmID(dto.getCid());
-	if(result == CustomerDao.CUSTOMER_NOEXISTENT){
+	int result = cDao.confirmId(dto.getCid());
+	if(result == CustomerDao.CUSTOMER_NONEXISTENT){
 		result = cDao.joinCustomer(dto);
 		if(result == CustomerDao.SUCCESS){
 			session.setAttribute("cid", dto.getCid());

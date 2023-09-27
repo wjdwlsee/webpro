@@ -15,7 +15,7 @@
 	<% 
 	CustomerDao cdao = CustomerDao.getInstance();
 	String cid = "bbb";
-	int result = cdao.confirmID(cid);
+	int result = cdao.confirmId(cid);
 	if	(result == CustomerDao.CUSTOMER_EXISTENT){
 		out.print("<h3>1.confitmID결과:" + cid + "는 중복된 아이디로 회원가입 불가합니다</h3>");
 	}else{
@@ -31,7 +31,7 @@
 	out.println("<h3>3. 로그인 결과 </h3>");
 	cid = "bbb"; String cpw = "111";
 	result = cdao.loginCheck(cid, cpw);
-	if(result == CustomerDao.LOGIN_SECCESS){
+	if(result == CustomerDao.LOGIN_SUCCESS){
 		out.print("id는 " + cid +", pw는 " + cpw + " : 로그인 성공<br>");
 	}else if(result == CustomerDao.LOGIN_FAIL){
 		out.print("id는 " + cid +", pw는 " + cpw + " : 로그인 실패<br>");
@@ -39,7 +39,7 @@
 	out.print("<h3>3. 로그인 결과(2)</h3>");
 	cid= "ppp"; cpw = "444";
 	result = cdao.loginCheck(cid, cpw);
-	if(result == CustomerDao.LOGIN_SECCESS){
+	if(result == CustomerDao.LOGIN_SUCCESS){
 		out.print("id는 " + cid +", pw는 " + cpw + " : 로그인 성공<br>");
 	}else {
 		out.print("id는 " + cid +", pw는 " + cpw + " : 로그인 실패<br>");

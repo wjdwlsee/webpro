@@ -27,8 +27,7 @@
 		String[] oriFilenames = {"","",""};
 		String name = null; int age=0;
 		try{
-			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8",
-																												new DefaultFileRenamePolicy());
+			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			Enumeration<String> paramNames = mRequest.getFileNames();
 			int idx = 0;
 			while(paramNames.hasMoreElements()){

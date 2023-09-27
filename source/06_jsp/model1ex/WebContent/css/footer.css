@@ -3,17 +3,14 @@ footer {
 	overflow:hidden;
 	width: 1000px;
 	margin: 0 auto;
-	background-color: lightyellow;
 }
 footer div {
 	float:left;
 	height: 90px;
-	
 }
 footer div.office_logo {
 	width: 300px;
 	text-align: center;
-	
 }
 footer div.office_logo img {
 	margin-left:100px;

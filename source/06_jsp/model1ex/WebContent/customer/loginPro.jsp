@@ -18,11 +18,11 @@
 	String method = request.getParameter("method");
 	CustomerDao cDao = CustomerDao.getInstance();
 	int result = cDao.loginCheck(cid, cpw);
-	if(result == CustomerDao.LOGIN_SECCESS){
+	if(result == CustomerDao.LOGIN_SUCCESS){
 		CustomerDto customer = cDao.getCustomer(cid);
 		session.setAttribute("customer",customer);
 		if(method.equals("null")){
-			response.sendRedirect(conPath+"/main/main.jsp");
+			response.sendRedirect(conPath+"/fileboard/fboardList.jsp");
 		}else{
 			response.sendRedirect(method+".jsp");
 		}
