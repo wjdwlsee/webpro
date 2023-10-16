@@ -46,7 +46,7 @@
 			<tr>
 				<th>메일</th>
 				<td colspan="2">
-					<input type="file" name="mphoto">
+					<input type="email" name="memail" value="${member.memail }">
 				</td>
 			</tr>
 			<tr>

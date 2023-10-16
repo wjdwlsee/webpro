@@ -23,13 +23,28 @@
 			alert('${logoutMsg}');
 		</script>
 	</c:if>
+	<c:if test="${not empty modifyResult }"> 
+		<script>alert('${modifyResult} ')</script>
+	</c:if>
+	<c:if test="${not empty modifyErrorMsg }" >
+		<script>
+			alert('${modifyErrorMsg}');
+			history.back();
+		</script>
+	</c:if>
+	<c:if test="${not empty withdrawalResult }" >
+		<script>
+			alert('${withdrawalResult}');
+			history.back();
+		</script>
+	</c:if>
 	<c:if test="${empty member }" > <!-- 로그인 전 화면 -->
 		<h1>로그인 상태가 아닙니다</h1>
 		<hr>
 		<p>
 			<button onclick="location.href ='${conPath }/loginView.do'">로그인</button>
 			<button onclick="location.href ='${conPath }/joinView.do'">회원가입</button>
-			<button onclick="location.href ='${conpath }'/allView.do'">전체화면보기</button>
+			<button onclick="location.href ='${conPath }/allView.do'">전체화면보기</button>
 		</p>
 	</c:if>
 	<c:if test="${not empty member }" > <!-- 로그인 후 화면 -->
