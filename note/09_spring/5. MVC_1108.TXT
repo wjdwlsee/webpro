@@ -1,0 +1,23 @@
+스프링 MVC개요, 스프링 MVC구조, resources 폴더
+< 스프링 MVC의 웹 요청 처리과정 >
+(1) 웹브라우저를 통해 클라이언트의 요청이 들어오면 무조건 맨 처음 DisptcherServlet에서 요청을 받는다. 
+(2) 요청된 내용을 HandlerMapping, Handler Adapter에게 작업을 보내 요청 URL과 매칭되는 컨트롤러를 검색해 준다.
+(3) 요청된 내용의 처리를 컨트롤러에게 요청한다
+(4) 요청된 내용을 Controller에게도 보내고 요청된 내용에 따라 다른 일을 하고, 컨트롤러 샐행결과를 ModelAndView로 변환해서 리턴한다
+(5) 컨트롤러의 실행결과를 보여줄 View를 검색하기 위해 ViewResolver에게도 보낸다.
+(6) 요청한 결과의 View로 응답 생성을 한다.
+※ 스프링 MVC 프로젝트 템플릿의 구조
+₪ src/main/java - 개발되는 Java 코드의 경로/ HomeController.java - 컨트롤러 : Dispatcher에서 전달된 요청을 처리
+₪ src/main/resources - 서버가 실행될 때 필요한 파일들의 경로/ ₪ src/test/java	- 테스트 전용 경로 (각 테스트 코드 작성 경로)
+₪ src/test/resources- 테스트 시에만 사용되는 파일들 경로 /₪ webapp - web root / ₪ spring - 스프링 설정 파일의 경로/ ₪ appServlet >servlet-context.xml- 스프링 컨테이너 설정 파일/₪ root-context.xml	- 스프링 컨테이너 설정 파일  ₪ views- 뷰(.jsp)
+    ₪ web.xml - Maven의 설정 파일 DispatcherServlet 서블릿 맵핑.   스프링 설정 파일(servlet-context.xml, root-context.xml) 위치 정의
+4. Resources 폴더
+(1) 이미지를 webapp아래의 resources폴더에 이미지를 copy해서 넣고, home.jsp에 “<p> <img src="/ch06/resources/h.jpg"></p>”추가하고 실행하면 이미지가 보인다.
+(2) webapp아래에 img라는 폴더를 만들고 이미지를 copy해서 넣고 home.jsp에 “<p> <img src="/ch08_1/img/h.jpg"></p>” 추가하고 실행하면 이미지가 보이지 않는다. 다음과 같은 순서에 따라 이미지가 보이도록 해야 보일 수 있다.
+web.xml에 있듯이, '/'가 들어오면 DispatcherServlet으로 보내고 그 DispatcherServlet은 컨트롤러로 보낸다.
+컨트롤러를 찾는 것은 servlet-context.xml에 나온 패키지 중 @Controller라는 어노테이션이 있는 곳을 컨트롤러로 본다.
+그안의 @requestMapping(요청을 매핑하는 어노테이션)대로 메소드를 수행하고 "home"을 뷰의 이름으로 리턴.
+servlet-context.xml의 prefix와 surfix로 뷰의 경로로 찾아가 실행한다.
+"/"로 시작하는 경우, 요청이 들어온 건 DispatcherServlet이 가로채라라고 했으므로, DispatcherServlet에서 컨트롤러에게 보낸다. 그러나, 제외시키는 코드가 servlet-context.xml에 명시해 놓는다.
+<resources mapping="/css/**" location="/css/" /> 
+위의 코드에 의해 /resources/로 시작하는 것과 /img/로 시작하는 것은 경로 그대로 읽게 한다
