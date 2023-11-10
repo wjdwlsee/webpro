@@ -11,7 +11,7 @@
 		<result property="hiredate" column="hiredate"/>
 		<result property="sal"  column="sal"/>
 		<result property="comm" column="comm"/>
-		<result property="deptno" column="detno"/>	
+		<result property="deptno" column="deptno"/>	
 	</resultMap>
 	<select id="empList" parameterType="Emp" resultMap="EmpResult">
 		SELECT * FROM EMP WHERE 1=1
