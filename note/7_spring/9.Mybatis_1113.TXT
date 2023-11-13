@@ -1,0 +1,25 @@
+MyBatis는 DB접근을 자바가 아닌 xml로 대체하도록 하는 라이브러리이다. SQL 코드를 자바코드와 분리시키는데 목적이 있다.
+진행순서 
+- pom.xml:필요라이브러리 의존추가
+- web.xml :한글처리. *.do
+- db.properties : DB환경설정정보
+- root-context.xml에 dataSource 빈생성
+- DTO
+- xml 생성 :mapper(empList,deptList) + config
+- root-context.xml에 SqlSessionfactoryBean, sessionTemplate(SqlSessionTemplate) 빈생성
+- 실행 첫화면 : css 추가해서 테스트
+- DAO
+- Service
+- Controller
+- emp.jsp
+Dao를 interface로 대체하는 방법
+1. Servlet-context.xml에 아래의 부분 추가 <mybatis-spring:scan base-package="com.lec.ch14.dao"/>
+ Mapper xml파일에 namespace를 DAO interface로 수정 (xml파일의 id와 DAO의 method이름은 일치)
+3. DeptDaoImpl.java와 EmpDaoImpl.java를 삭제하고 DeptDao와 EmpDao interface 선언 위에 @Mapper 
+XML에서 동적 SQL 처리 
+if 엘리먼트 : 모든 조건에 대해 처리하고 만족하는 조건의 결과를 모두 적용한다.
+동적 QUERY : 위와 같이 SQL 구문이 조건에 따라서 변경되는 것을 말한다.
+choose(when, otherwise) : 조건 지정과 그 외에 대한 처리를 동적인 SQL에서 진행할 때 활용된다
+trim(where) 엘리먼트 : if 엘리먼트가 조건 처리에서 where 구문에 대한 처리를 보완하기 위해 사용한다.
+Prefix : 처리 후 엘리먼트 내용이 있으면 앞에 붙여줌
+prefixOverrides : 처리 후 앞에 해당 문자 있으면 자동으로 지워줌

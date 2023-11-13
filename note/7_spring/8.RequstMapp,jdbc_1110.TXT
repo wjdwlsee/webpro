@@ -1,0 +1,19 @@
+1. Get 방식과 Post 방식
+@RequestMapping에서 요청을 받을 때: Get방식(url에 데이터를 실어서 보냄)
+ 				  Post방식(header에 데이터를 실어서 보냄)을 구분 할 수 있다
+@RequestMapping 어노테이션을 이용해서 value값은 요청경로. method값에는 요청방식이 들어간다. (방식이 맞지 않으면 405에러)
+ redirect 키워드 : 다른 페이지로 이동할 때 사용
+입력하거나 넘겨주는 요청값(model attribute)이 필요 없이 controller단을 호출할 때
+ forward 키워드 : 다른 페이지로 이동할 때 사용
+요청값(model attribute)도 함께 넘겨주면서 controller단을 호출할 때
+forward:studentNg.do,  "forward:student/studentOk.do"
+
+2.JDBC template를 이용한 반복코드 줄이기 : JDBC를 이용하는 가장 큰 이유
+DAO객체를 이용해서 DataBase의 데이터를 이용. 
+이때 매번 같은 동작을 반복하는 부분단간하게 처리.(드라이버 로드, 커넥션 생성 및 DB연결, SQL실행, 자원해제)
+1 JDBC 드라이버 로드 – DriverManager
+2 데이터 베이스 연결 – Connection        
+3 SQL문 실행 – PreparedStatement, ResultSet
+4 DB 연결 해제 - *.close()
+Spring 빈을 이용한 코드 간소화 : 스프링 설정파일에서 JdbcTeplate 빈을 생성하여 사용한다
+3. JDBC를 이용한 list, Insert, update, delete 처리가능 (JDBC Template 사용을 위한 dependencies 추가),(db.properties)
