@@ -35,11 +35,3 @@ SELECT * FROM DEPT;
 
 
 
-
-
-
-
-
-
---Dept.xml
-

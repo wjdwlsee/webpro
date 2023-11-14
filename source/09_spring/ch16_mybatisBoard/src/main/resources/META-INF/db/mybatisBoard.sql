@@ -53,10 +53,10 @@ UPDATE MVC_BOARD
 COMMIT;
 DELETE FROM MVC_BOARD WHERE BID=1;
 ROLLBACK;
--- 8. 답변글 저장 전단계(엑셀 ⓐ단계) : 3번글의 답변글을 달기 위해 3번글 정보필요
-SELECT * FROM MVC_BOARD WHERE BID=3;
+-- 8. 답변글 저장 전단계(엑셀 ⓐ단계) : 3번글의 답변글을 달기 위해 3번글 정보필요  id = boardPreReplyStep
+SELECT * FROM MVC_BOARD WHERE BID=3; 
 UPDATE MVC_BOARD SET BSTEP = BSTEP+1 WHERE BGROUP=2 AND BSTEP > 1;
--- 9. 답변글 저장 (원글의 BGROUP=2, BSTEP=1, BINDENT=1)
+-- 9. 답변글 저장 (원글의 BGROUP=2, BSTEP=1, BINDENT=1) id = boardReply
 INSERT INTO MVC_BOARD (BID, bNAME, bTITLE, BCONTENT, BGROUP, bSTEP, BINDENT, BIP)
   VALUES (MVC_BOARD_SEQ.NEXTVAL, '김', '글3의 답', '', 2, 2, 2, '192.1.1.1');
 COMMIT;
